@@ -34,4 +34,23 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
       throw new IllegalArgumentException();
   }
   
+  public T set(int index, T element){
+    if (element != null){
+      remove(index);
+      add(index, element);
+      return remove(index);
+    }
+    else
+      throw new IllegalArgumentException();
+  }
+
+  public static void main(String[] args){
+    OrderedArrayList<Integer> a = new OrderedArrayList<Integer>();
+    for (int i = 0; i < 5; i++)
+      a.add(i);
+    System.out.println(a); //expected [1, 2, 3, 4]
+    a.set(0, 20);
+    a.add(1, 21);
+    System.out.println(a); //expected [20, 21, 2, 3, 4]
+  }
 }

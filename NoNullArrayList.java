@@ -24,5 +24,21 @@ public class NoNullArrayList<T> extends ArrayList<T>{
     else
       throw new IllegalArgumentException();
   }
+  
+  public T set(int index, T element){
+    if (element != null){
+      super.set(index, element);
+      return element;
+    }
+    else
+      throw new IllegalArgumentException();
+  }
 
+  public static void main(String[] args){
+    NoNullArrayList<String> test1 = new NoNullArrayList<String>();
+    test1.add("longan");
+    test1.add(1, "starfruit");
+    test1.set(0, "apple");
+    System.out.println(test1); //expected: [apple, starfruit]
+  }
 }

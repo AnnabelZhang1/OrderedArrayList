@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 public class NoNullArrayList<T> extends ArrayList<T>{
 
   public NoNullArrayList(){
@@ -24,7 +25,7 @@ public class NoNullArrayList<T> extends ArrayList<T>{
     else
       throw new IllegalArgumentException();
   }
-  
+
   public T set(int index, T element){
     if (element != null){
       super.set(index, element);

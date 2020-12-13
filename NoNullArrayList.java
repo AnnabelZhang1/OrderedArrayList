@@ -38,8 +38,9 @@ public class NoNullArrayList<T> extends ArrayList<T>{
   public static void main(String[] args){
     NoNullArrayList<String> test1 = new NoNullArrayList<String>();
     test1.add("longan");
-    test1.add(1, "starfruit");
+    test1.add("starfruit");
+    test1.add(1, "grape");
     test1.set(0, "apple");
-    System.out.println(test1); //expected: [apple, starfruit]
+    System.out.println(test1); //expected: [apple, grape, starfruit]
   }
 }

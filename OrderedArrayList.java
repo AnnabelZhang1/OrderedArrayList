@@ -18,4 +18,20 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
     return size();
   }
 
+  public boolean add(T element){
+    if (element != null){
+      super.add(indexOf(element), element);
+      return true;
+    }
+    else
+      throw new IllegalArgumentException();
+  }
+
+  public void add(int index, T element){
+    if (element != null)
+      super.add(index, element);
+    else
+      throw new IllegalArgumentException();
+  }
+  
 }

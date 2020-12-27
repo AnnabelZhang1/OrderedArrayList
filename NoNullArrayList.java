@@ -28,8 +28,7 @@ public class NoNullArrayList<T> extends ArrayList<T>{
 
   public T set(int index, T element){
     if (element != null){
-      super.set(index, element);
-      return element;
+      return(super.set(index, element));
     }
     else
       throw new IllegalArgumentException();

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T>{
 
@@ -12,45 +13,48 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
 
   private int indexOf(T index){
     for (int i = 0; i < size(); i++){
-      if (get(i).equals(index))
+      if (index.compareTo(get(i)) <= 0)
         return i;
     }
     return size();
   }
 
   public boolean add(T element){
-    if (element != null){
+    if (element != null)
       super.add(indexOf(element), element);
-      return true;
-    }
     else
       throw new IllegalArgumentException();
+    return true;
   }
 
   public void add(int index, T element){
-    if (element != null)
-      super.add(index, element);
-    else
-      throw new IllegalArgumentException();
+    add(element);
   }
-  
+
   public T set(int index, T element){
     if (element != null){
-      remove(index);
-      add(index, element);
-      return remove(index);
+      T temp = remove(index);
+      add(element);
+      return temp;
     }
     else
       throw new IllegalArgumentException();
   }
 
   public static void main(String[] args){
-    OrderedArrayList<Integer> a = new OrderedArrayList<Integer>();
-    for (int i = 0; i < 5; i++)
-      a.add(i);
-    System.out.println(a); //expected [1, 2, 3, 4]
-    a.set(0, 20);
-    a.add(1, 21);
-    System.out.println(a); //expected [20, 21, 2, 3, 4]
+    OrderedArrayList<Double> a = new OrderedArrayList<Double>();
+    Random r = new Random();
+    a.add(1.0);
+    for (int i = 0; i < 40; i++)
+      a.add(Math.random()*10000);
+    a.set(0, 8.0);
+    System.out.println(a);
+
+    OrderedArrayList<Double> b = new OrderedArrayList<Double>();
+    b.add(17.0);
+    b.add(18.0);
+    for (int i = 0; i < 40; i++)
+      b.add(0, Math.random()*10000);
+    System.out.println(b);
   }
 }
